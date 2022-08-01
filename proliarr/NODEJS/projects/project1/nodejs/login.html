@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>C.R.U.D</title>
+    <style>
+        .container {
+            margin-left: 550px;
+            margin-top: 150px;
+            width: 300px;
+            height: 200px;
+            padding: 15px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <table>
+            <tbody>
+                <form action="/login" method="POST">
+                    <tr>
+                        <td> id</td>
+                        <td><input type="text" name="id" placeholder="age" required></td>
+                    </tr>
+                    <tr>
+                        <td> name</td>
+                        <td><input type="text" name="name" placeholder="name" required></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td>password</td>
+                        <td><input type="password" name="password" placeholder="password 4-16" required></td>
+                    </tr>
+                    <tr>
+                        <td><button>Submit</button></td>
+                    </tr>
+                    <tr>
+                        <td> <a href="http://127.0.0.1:8000/login/">LOGIN</a> </td>
+                    </tr>
+                    <tr>
+                        <td> <a href="http://127.0.0.1:8000/retrieve">Check data</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://127.0.0.1:8000/imageupd/">image</a> </td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://127.0.0.1:8000/imageget/">image show</a> </td>
+                    </tr>
+
+                </form>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+.button{
+
+    position: relative;
+    left: 50px;
+   
+}
+
+.tabl {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 10px;
+    background: rgb(206, 194, 194);
+  }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>retrieve</title>
+</head>
+<body>
+<div>
+    <table border="2">
+        <tbody>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+                <th>address</th>
+                <th>delete</th>
+                <th>update</th>
+                <th>time</th>
+
+
+
+            </tr>
+
+    </thead>
+        </tbody>
+    <tbody>
+         {% for i in  Details %}
+        <tr>
+            <th>{{ i.id }}</th>
+            <th>{{ i.name }}</th>
+            <th>{{ i.age }}</th>
+            <th>{{ i.address }}</th>
+
+            <th>
+                <a href="/delete/{{ i.id }}">delete</a>
+            </th>
+            <th>
+                <a href="/update/{{ i.id }}">update</a>
+            </th>
+            <th>{{i.time}}</th>
+
+
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+
+</div>
+<div><a href="http://127.0.0.1:8000">sign in</a></div>
+</body>
+</html>
