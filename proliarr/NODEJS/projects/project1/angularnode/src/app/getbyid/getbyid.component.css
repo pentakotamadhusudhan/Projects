@@ -1,0 +1,22 @@
+.table{
+    background-color: orange;
+    width: 15%;
+    height: auto;
+    color: black;
+    text-emphasis-color: white;
+    position: relative;
+    left:30%;
+    top:50%;
+    padding: 
+    10px;
+
+   
+}
+header{
+    font-size:64px;
+    text-align: center;
+}
+button{
+    background-color: greenyellow;
+    color: black;
+}

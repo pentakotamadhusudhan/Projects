@@ -1,0 +1,17 @@
+<body>
+    <div>
+        <button (click)="return()">HOME</button>
+        <br><br>
+        <form  #login="ngForm" (ngSubmit)="loginDataFromAPI(login.value)">
+            name <input type="text" ngModel name="name">
+            password <input type="text" ngModel name="password">
+
+            <button type="submit">submite</button>
+            <br><br>
+            {{results.name}}
+        </form>
+    </div>
+</body>
+<div>
+
+</div>

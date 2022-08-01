@@ -1,0 +1,21 @@
+<h1>post works!</h1>
+<body>
+  
+  <button (click)="return()">HOME</button>
+<div>
+  <form #madhu = "ngForm" (ngSubmit)="postDataFromAPI(madhu.value)">
+    ID <input type="number"  placeholder="id" ngModel name="id" required>
+  name <input type="text" ngModel name="name">
+  password <input type="text" ngModel name="password">
+  <button type="submit">submite</button>
+  
+</form>
+</div>
+<div>
+ <button (click)="get()">get details</button>
+  <!-- <a href="http://localhost:4200/get">get details</a> -->
+</div>
+{{dddaaa}}
+<h1>post html called</h1>
+
+</body>

@@ -1,0 +1,139 @@
+
+/** @swagger
+ * /get:
+ *    get:
+ *      description: Use to request all customers
+ *      summary: Get the users
+ *      responses:
+ *          '200':
+ *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *
+ * /user2:
+ *    get:
+ *      description: asdbahjdabd
+ *      responses:
+ *          '200':
+ *              description: successfull
+ * /add:
+ *    post:
+ *      summary: Create a new user
+ *      tags: [User]
+ *      produces:
+ *          - application/json
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          - in: body
+ *            name: body
+ *            required: true
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  id:
+ *                      type: string
+ *                  Firstname:
+ *                      type: string
+ *                  Lastname:
+ *                      type: string
+ *                  Email:
+ *                      type: string
+ *                  Username:
+ *                      type: string
+ *                  Password:
+ *                      type: string
+ *                  MobileNumber:
+ *                      type: string
+ *                  DeviceToken:
+ *                      type: string
+ *      responses:
+ *          200:
+ *              description: successfull
+ * 
+ */
+ 
+
+
+
+ const options = {
+  definition:{
+      openapi:'3.0.0',
+      info: {
+        title: 'swagger Registration Swagger API',
+        version: '1.0.0',
+        description: 'Endpoints to test the user registration routes',
+      },
+    servers:[
+      {
+      url:'http://localhost:8080'
+    }
+  ]
+  },
+  apis:['/server.js']
+}
+
+const swaggerSpec = swaggerJSDoc(options);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
+
+const swaggerOptions = {
+  swaggerDefinition: {
+      info: {
+          title: 'Student API',
+          description: "Student API information",
+          servers: [{url:'http://localhost:3000'}],
+          contact: {
+              name: "amezing developer"
+          }
+      }
+  },
+  apis: ["database.js"]
+}
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
+/** 
+ * @swagger
+ * /get:
+ *    get:
+ *      description: Use to request all customers
+ *      summary: Get the users
+ *      responses:
+ *          '200':
+ *              description: A successful response
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *
+ * /add:
+ *    post:
+ *      summary: Create a new user
+ *      tags: [User]
+ *      produces:
+ *          - application/json
+ *      consumes:
+ *          - application/json
+ *      parameters:
+ *          - in: body
+ *            name: body
+ *            required: true
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  brandname:
+ *                      type: string
+ *                  name:
+ *                      type: string
+ *                  
+ *      responses:
+ *          200:
+ *              description: successfull
+ * 
+ */
+ 
