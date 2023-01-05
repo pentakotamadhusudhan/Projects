@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>C.R.U.D</title>
+    <style>
+        .container {
+            margin-left: 550px;
+            margin-top: 150px;
+            width: 300px;
+            height: 200px;
+            padding: 15px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <table>
+            <tbody>
+                <form  method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <td> name</td>
+                        <td><input type="text" name="name" placeholder="name" required></td>
+                    </tr><br>
+                    <tr>
+                        <td> surname</td>
+                        <td><input type="text" name="surname" placeholder="surname" required></td>
+                    </tr>
+                    <tr>
+                        <td> password</td>
+                        <td><input name='password' placeholder="password" required></input></td>
+                    </tr>
+
+                    <tr>
+                        <td><button>Submit</button></td>
+                    </tr>
+
+
+                </form>
+            </tbody>
+        </table>
+    </div>
+</body>
+{{current_time}}
+</html>
