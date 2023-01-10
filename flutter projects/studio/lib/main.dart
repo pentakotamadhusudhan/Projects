@@ -11,18 +11,7 @@ void main(){
 
 
 // how to show image in screen----
-// class Myapp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return  Scaffold(
-//       appBar: AppBar(title: Text('Myapp bar'),),
-//       body:Center(child: Image(
-//         // image: NetworkImage('https://ik.imagekit.io/j83rchiauw/A_List_Star/pawan-kalyan-biography.jpg'),
-//       image:AssetImage('assets/img/lifeeazy.jpg'),
-//       ))
-//     );
-//   }
-// }
+
 
 
 class Myapp extends StatelessWidget {
@@ -36,10 +25,6 @@ class Myapp extends StatelessWidget {
 
           children:const <Widget> [
             Center(child: Image(image:AssetImage('assets/img/lifeeazy.jpg'),),),
-            // Center(child: Text('welcome',style:TextStyle(fontSize: 40,color: Colors.red,),)),
-
-            // Center(child: Text(x,style:TextStyle(fontSize: 40,color: Colors.red,),)),
-
           Center(child: Center(child: TextField(decoration: InputDecoration(labelText: "User Name",),),),
         ),
 
@@ -59,7 +44,7 @@ class Myapp extends StatelessWidget {
     );
   }
 }
-  
+
 func(){
   print(200);
 }
