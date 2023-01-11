@@ -1,50 +1,57 @@
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(MaterialApp(
-    home: Myapp()
-    )
-  )
-  ; // runApp
-} //main function
+void main() => runApp(MyApp());
 
-
-
-// how to show image in screen----
-
-
-
-class Myapp extends StatelessWidget {
-  var x=' to \n Lifeeazy';
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(title: Text('Myapp bar'),),
-        body:Column(
-
-
-          children:const <Widget> [
-            Center(child: Image(image:AssetImage('assets/img/lifeeazy.jpg'),),),
-          Center(child: Center(child: TextField(decoration: InputDecoration(labelText: "User Name",),),),
-        ),
-
-            Center(
-                child: Center(child: TextField(decoration: InputDecoration(labelText: "Password",hintText: 'enter your password'),),),
-              ),
-
-            ElevatedButton(onPressed: func,
-            child: Text('Login',
-            style: TextStyle(color: Colors.yellow,fontSize: 30,backgroundColor: Colors.blueAccent),
-            ),
-            )
-
-
-          ],
-        )
+    return MaterialApp(
+      home: _myapp(),
     );
   }
 }
 
-func(){
-  print(200);
+class _myapp extends StatefulWidget {
+  const _myapp({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _mystateless();
+  }
+}
+
+class _mystateless extends State<_myapp> {
+  TextEditingController _username = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+
+          Container(
+            padding: EdgeInsets.only(top:200,left: 30,right: 30),
+            child: TextField(decoration: InputDecoration(labelText: 'UserName'),
+            controller: _username,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top:10,left: 30,right: 30),
+            child: TextField(decoration: InputDecoration(labelText: 'Password'),
+            controller: _password,
+              ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            child: ElevatedButton(onPressed: (){
+              print(_username.text);
+              print(_password.text);
+            }, child: Text('button')),
+          ),
+        ],
+      ),
+    );
+
+  }
 }
