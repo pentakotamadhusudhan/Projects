@@ -24,6 +24,8 @@ class _myapp extends StatefulWidget {
 class _mystateless extends State<_myapp> {
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
+  var username = 'Madhu';
+  var password = 'password';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +47,16 @@ class _mystateless extends State<_myapp> {
           Container(
             padding: EdgeInsets.only(top: 10),
             child: ElevatedButton(onPressed: (){
-              print(_username.text);
-              print(_password.text);
-            }, child: Text('button')),
+              // print(_username.text);
+              // print(_password.text);
+              if (username==_username.text){
+                print('ohk');
+                if (password==_password.text){
+                  print('Login sucecss');
+                }
+              }
+
+            }, child: Text('Login')),
           ),
         ],
       ),
