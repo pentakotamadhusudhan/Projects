@@ -1,7 +1,5 @@
-void main(){
-  add(5, 6);
-}
+import 'package:flutter/material.dart';
 
-add (int a, int b){
-  print(a+b);
-}
+
+var name ='madhu welcome';
+

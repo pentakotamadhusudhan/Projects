@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studio/views/doctor_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,9 +32,13 @@ class _mystateless extends State<_myapp> {
     return Scaffold(
       body: Column(
         children: [
+          Container(
+            padding: EdgeInsets.only(top: 50),
+            child: Image(image: NetworkImage('https://www.vivifyhealthcare.com/wp-content/uploads/2021/02/cropped-vivify_login.png'),),
+          ),
 
           Container(
-            padding: EdgeInsets.only(top:200,left: 30,right: 30),
+            padding: EdgeInsets.only(top:20,left: 30,right: 30),
             child: TextField(decoration: InputDecoration(labelText: 'UserName'),
             controller: _username,
             ),
@@ -45,11 +50,16 @@ class _mystateless extends State<_myapp> {
               ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 15),
             child: ElevatedButton(onPressed: (){
+              Icon(Icons.menu);
               // print(_username.text);
               // print(_password.text);
               if (username==_username.text){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (madhu) =>  screen1()),
+                );
                 print('ohk');
                 if (password==_password.text){
                   print('Login sucecss');
@@ -62,5 +72,59 @@ class _mystateless extends State<_myapp> {
       ),
     );
 
+  }
+}
+
+
+
+
+
+
+class NavDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text(
+              'Side menu',
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            decoration: BoxDecoration(
+                color: Colors.green,
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage('assets/images/cover.jpg'))),
+          ),
+          ListTile(
+            leading: Icon(Icons.input),
+            title: Text('Welcome'),
+            onTap: () => {},
+          ),
+          ListTile(
+            leading: Icon(Icons.verified_user),
+            title: Text('Profile'),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+          ListTile(
+            leading: Icon(Icons.border_color),
+            title: Text('Feedback'),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Logout'),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+        ],
+      ),
+    );
   }
 }
