@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studio/views/doctor_screen.dart';
+import 'package:studio/views/registrationscreen.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -36,7 +38,6 @@ class _mystateless extends State<_myapp> {
             padding: EdgeInsets.only(top: 50),
             child: Image(image: NetworkImage('https://www.vivifyhealthcare.com/wp-content/uploads/2021/02/cropped-vivify_login.png'),),
           ),
-
           Container(
             padding: EdgeInsets.only(top:20,left: 30,right: 30),
             child: TextField(decoration: InputDecoration(labelText: 'UserName'),
@@ -50,7 +51,29 @@ class _mystateless extends State<_myapp> {
               ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 15),
+
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 30,),
+                  child: Text('Not Signed up yet?'),
+                ),
+                TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (madhu) =>  regiScreen()),
+                      );
+                    },
+
+                    child: Text('Register')
+                ),
+              ],
+            ),
+          ),
+          Container(
+
+            padding: EdgeInsets.only(top: 25),
             child: ElevatedButton(onPressed: (){
               Icon(Icons.menu);
               // print(_username.text);
@@ -58,7 +81,7 @@ class _mystateless extends State<_myapp> {
               if (username==_username.text){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (madhu) =>  screen1()),
+                  MaterialPageRoute(builder: (madhu) =>  PopupMenuExample()),
                 );
                 print('ohk');
                 if (password==_password.text){
