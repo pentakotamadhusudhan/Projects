@@ -29,22 +29,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future apicall() async {
-    String uri = 'https://reqres.in/api/users/2';
+    String uri = 'http://127.0.0.1:8000/restget';
+    print(uri.runtimeType);
     http.Response response;
     response = await http.get(Uri.parse(uri));
-    if (response.statusCode == 200) {
-      print('sdfghjkdfghjk ');
-      setState(() {
-        print(StringResponse);
-        StringResponse = response.body;
-        var con= jsonDecode(StringResponse);
-        // print(StringResponse);
-        var data = jsonDecode(StringResponse);
-        url_data =(data['data']);
-        print(StringResponse.runtimeType);
-      });
-    }
+
+    var responseData = json.decode(response.body);
+    print(responseData);
   }
+
 
   @override
   void initState() {
