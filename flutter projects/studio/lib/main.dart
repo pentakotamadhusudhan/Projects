@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: _myapp(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -81,7 +82,7 @@ class _mystateless extends State<_myapp> {
               if (username==_username.text){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (madhu) =>  PopupMenuExample()),
+                  MaterialPageRoute(builder: (madhu) =>  typeofpartners()),
                 );
                 print('ohk');
                 if (password==_password.text){

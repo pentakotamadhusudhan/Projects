@@ -1,89 +1,213 @@
 import 'package:flutter/material.dart';
-import 'package:studio/sample.dart';
-import 'package:studio/models/post.dart';
-import 'package:studio/serivces/remote_service.dart';
+import 'package:studio/views/doctor_screen.dart';
+import 'package:studio/views/screens/doctor_home_screeen.dart';
 
-
-// class screen1 extends StatelessWidget{
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Post a data',style: TextStyle(color: Colors.black87,fontSize: 24),),
-//         automaticallyImplyLeading: false,
-//         leading: Icon(Icons.menu),
-//       ),
-//       body:ListView.builder(
-//         itemCount:10,
-//         itemBuilder: (context,index){
-//           return Container(
-//
-//
-//             child: Text('hi...........'),
-//           );
-//         },
-//       ),
-//
-//     );
-//   }
-//
-// }
-
-class PopupMenuExample extends StatelessWidget {
-  const PopupMenuExample({Key? key}) : super(key: key);
+class typeofpartners extends StatelessWidget {
+  const typeofpartners({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+        
         children: [
-          Container(
-
-            child: Row(
-
-              children: [
-                Text('ROW 1'),
-                Container(
-                  child: Icon(Icons.access_time_filled_sharp,size:100,color: Colors.blue,),
-                ),Container(
-                  child: Icon(Icons.access_time_filled_sharp,size:100,color: Colors.red,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                // padding: EdgeInsets.all(10),
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
                 ),
-                Container(
-                  child: Icon(Icons.access_time_filled_sharp,size:100,color: Colors.yellow,),
+                child: TextButton(
+                  child: Text('Certified Doctor',style: TextStyle(color: Colors.black87),),onPressed: (){
+                    print('cerified doctor cilcked');
+                    Navigator.push(context, MaterialPageRoute(builder: (doctor)=>doctor_home_screen()),
+                  );
+                  },
+
                 ),
-              ],
-            )
+
+              ),
+              Container(
+                // padding: EdgeInsets.all(5),
+                height: 150,
+                width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.blue,
+                  ),
+                  child: TextButton(
+                    child: Text('Pharmacy',style: TextStyle(color: Colors.black87),),onPressed: (){
+                    print('cerified doctor cilcked');
+                  },
+
+                  )
+              )
+            ],
           ),
-          Container(
-            width: 200,
-
-            decoration: BoxDecoration(border:Border.all(color: Colors.black87),borderRadius: BorderRadius.circular(20),),
-            child: TextButton(onPressed: (){},child: Text('Button'),)
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Diagnostics',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Emergency',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              )
+            ],
           ),
-          Container(
-            child: Row(
-
-              children: [
-                Text('ROW 2'),
-                Container(
-
-                  child: Icon(Icons.add_a_photo,size:100,color: Colors.blue,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
                 ),
-                Container(
-                  child: Icon(Icons.add_a_photo,size:100,color: Colors.red,),
+                child: Center(child:Text(
+                  'Clinic',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
                 ),
-                Container(
-                  child: Icon(Icons.account_circle,size:100,color: Colors.yellow,),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
                 ),
-              ],
-            ),
+                child: Center(child:Text(
+                  'Hospital',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              )
+            ],
           ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Home Care',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 10),
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Delivery',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              )
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Marketing',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              ),
+              Container(
+                height: 150,
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
+                ),
+                child: Center(child:Text(
+                  'Blood Bank',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black87,
+                  ),
+                )
+                ),
+              )
+            ],
+          ),
+
         ],
       ),
-
-
     );
   }
 }
