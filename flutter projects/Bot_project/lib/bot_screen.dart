@@ -11,13 +11,11 @@ class Bot_screen extends StatefulWidget {
   State<Bot_screen> createState() => screenState();
 }
 
+
+double? x;
 class screenState extends State<Bot_screen> {
   final GlobalKey<AnimatedListState> _listkey = GlobalKey();
-  final ScrollController _scrollController = ScrollController(
-    initialScrollOffset: 0.0,
 
-
-  );
   bool _needsScroll = false;
 
 
@@ -28,11 +26,33 @@ return 0.10;
   static const String Bot_URL =
       'http://bot.vivifyhealthcare.com:5007/webhooks/rest/webhook';
   TextEditingController querycontroller = TextEditingController();
+  ScrollController scrollController = ScrollController();
+  late ScrollController _scrollController;
+  bool  _showBackToTopButton=false;
 
-void initState() {
-  // getrespose('msg');
-}
-
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController.offset >= 400) {
+            _showBackToTopButton = true; // show the back-to-top button
+          } else {
+            _showBackToTopButton = false; // hide the back-to-top button
+          }
+        });
+      });
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _scrollController.dispose(); // dispose the controller
+    super.dispose();
+  }
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(seconds: 3), curve: Curves.linear);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +65,14 @@ void initState() {
         title: const Text('Chat Bot'),
       ),
       body: Stack(
+
         children: <Widget>[
 
+
    AnimatedList(
+     controller: _scrollController,
      scrollDirection: Axis.vertical,
+
         padding: EdgeInsetsDirectional.only(bottom: 50.0),
         key: _listkey,
         itemBuilder: (BuildContext context, int index, Animation animation) {
@@ -57,6 +81,7 @@ void initState() {
         },
       ),
           Align(
+
            alignment: Alignment.bottomCenter,
            child: ColorFiltered(
              colorFilter: const ColorFilter.linearToSrgbGamma(),
@@ -68,6 +93,7 @@ void initState() {
                    controller: querycontroller,
                    textInputAction: TextInputAction.send,
                    onSubmitted: (msg) {
+
                      this.getrespose(msg);
                      querycontroller.clear();
                    },
@@ -80,8 +106,8 @@ void initState() {
            ),
          )
         ],
-      ),
-    );
+      ));
+
   }
 
   List response_list = [];
@@ -144,7 +170,7 @@ void initState() {
          Container(
 
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(2),
               child: Container(
                   alignment: mine ? Alignment.topLeft : Alignment.topRight,
                   child: mine
@@ -175,15 +201,21 @@ void initState() {
       if (txt == false) {
         return ElevatedButton(
           onPressed: () {
+
+
             var btnText3 = _data[index];
             getrespose(btnText3.replaceAll("<bot>", ''));
             print(btnText3.replaceAll("<bot>", ''));
+
+            _scrollController.animateTo(10000000,duration: Duration(seconds: 5), curve: Curves.linear);
+            // _scrollController.;
           },
           child: Text(
             btnText2,
             style: const TextStyle(color: Colors.black),
           ),
           style: ElevatedButton.styleFrom(primary: Colors.blue[500]),
+
         );
       } else {
         print('object');
