@@ -1,3 +1,4 @@
+import 'package:bot_project/views/clinic_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'bot_screen.dart';
@@ -97,7 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Bot_screen()));
+              MaterialPageRoute(builder: (context) => const ClinicScreen()));
+              // MaterialPageRoute(builder: (context) => const Bot_screen()));
         },
 
         child: const Icon(Icons.bolt),
