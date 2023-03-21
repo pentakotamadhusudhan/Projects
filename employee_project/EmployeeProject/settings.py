@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_swagger',
+    'drf_yasg',
     'rest_framework',
     'EmployeeCrud',
 ]
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'EmployeeProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':[BASE_DIR, 'templates'] ,
+        'DIRS':[] ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

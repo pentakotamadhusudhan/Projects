@@ -26,10 +26,10 @@ class employeeRegistration(generics.GenericAPIView):
                 ser = registration_serilizer(data=request.data)
                 ser.is_valid()
                 resp = ser.save()
-                # x=resp.id
-                # l = len(x)
-                # basicID = 'EMP000'
-                # emp_id = basicID[:-l] + x
+                x=resp.id
+                l = len(x)
+                basicID = 'EMP000'
+                emp_id = basicID[:-l] + x
                 return Response({
                                 "message":"employee created successfully",
                                 "regid":"EMp002",
