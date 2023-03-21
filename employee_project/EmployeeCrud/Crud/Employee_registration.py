@@ -17,7 +17,8 @@ class employeeRegistration(generics.GenericAPIView):
         try:
             email = request.data.get('Email')
             try:
-                if EmployeeModel.objects.get(Email=email):
+                if EmployeeModel.objects.filter(Email=email):
+                    print('madihbu')
                     return Response({
                         "Status":200,"message":"employe already exist","success":False
                     })
