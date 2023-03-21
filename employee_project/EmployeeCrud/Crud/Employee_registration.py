@@ -5,6 +5,12 @@ from ..models import EmployeeModel
 from ..serilizers import registration_serilizer
 
 class employeeRegistration(generics.GenericAPIView):
+    """
+    You can create a EMployee
+    Email is unique
+    After fill the form
+    You can get Employee ID like EMP000
+    """
     serializer_class = registration_serilizer
 
     def post(self,request):
