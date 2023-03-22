@@ -10,8 +10,8 @@ from ..serilizers import *
 class Updateview(generics.GenericAPIView):
     serializer_class = registration_serilizer
 
-    def put(self,request,EmpId):
-        emp = employeeModel.objects.get(regId=EmpId)
+    def put(self,request,regId):
+        emp = employeeModel.objects.get(regId=regId)
         ser = Updateserializer(instance=emp,data=request.data)
         ser.is_valid()
         ser.save()
@@ -24,10 +24,10 @@ class Updateview(generics.GenericAPIView):
 class qualificationupdateview(generics.GenericAPIView):
     serializer_class = qualificationserializer
 
-    def put(self,request,EmpId):
+    def put(self,request,regId):
           try:
               try:
-                    emp = qualificationModel.objects.get(empId=EmpId)
+                    emp = qualificationModel.objects.get(regId=regId)
                     ser = qualificationserializer(instance=emp,data=request.data)
                     ser.is_valid()
                     ser.save()
@@ -35,7 +35,7 @@ class qualificationupdateview(generics.GenericAPIView):
                     return Response({
                         "Status": 200,
                         "Resuly": {"message": "employee created successfully",
-                                   "regid": EmpId,
+                                   "regid": regId,
                                    "success": True}
                     })
 
@@ -57,9 +57,9 @@ class qualificationupdateview(generics.GenericAPIView):
 class projectupdateview(generics.GenericAPIView):
     serializer_class = projectSerilizer
 
-    def put(self,request,EmpId):
+    def put(self,request,regId):
         try:
-            emp = projectModel.objects.get(empId=EmpId)
+            emp = projectModel.objects.get(regId=regId)
             ser = projectSerilizer(instance=emp,data=request.data)
             ser.is_valid()
             ser.save()
@@ -67,7 +67,7 @@ class projectupdateview(generics.GenericAPIView):
             return Response({
                 "Status": 200,
                 "Resuly": {"message": "employee created successfully",
-                           "regid": EmpId,
+                           "regid": regId,
                            "success": True}
             })
 
@@ -90,10 +90,10 @@ class workUpdateview(generics.GenericAPIView):
     serializer_class = workserializer
 
 
-    def put(self,request,EmpId):
+    def put(self,request,regId):
         try:
             try:
-                emp = work_Experience.objects.get(empId=EmpId)
+                emp = work_Experience.objects.get(regId=regId)
                 ser = workserializer(instance=emp,data=request.data)
                 ser.is_valid()
                 ser.save()
@@ -101,7 +101,7 @@ class workUpdateview(generics.GenericAPIView):
                 return Response({
                     "Status": 200,
                     "Resuly": {"message": "employee created successfully",
-                               "regid": EmpId,
+                               "regid": regId,
                                "success": True}
                 })
 

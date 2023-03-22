@@ -18,20 +18,19 @@ class employeeRegistration(generics.GenericAPIView):
         try:
             email = request.data.get('Email')
             try:
-                print('viewss')
-                if employeeModel.objects.get(Email=email):
-                    return Response({"status":200,
-                                 'Result':{"message": "Employee Already Exist",
-                                  "sucess": False},
-                                 })
+                employeeModel.objects.get(Email=email)
+                return Response({"status":200,
+                             'Result':{"message": "Employee Already Exist",
+                              "sucess": False},
+                             })
             except:
                 ser = registration_serilizer(data=request.data)
                 ser.is_valid()
                 resp = ser.save()
-
+                print(resp.regId)
                 return Response({"status":200,
                              'Result':{"message": "Employee created successfully",
-                                       "EmpId":resp.EmpId,
+                                       "regId":resp.regId,
                                        "sucess": True},
                              })
         except AssertionError:
@@ -40,8 +39,8 @@ class employeeRegistration(generics.GenericAPIView):
                              'Result':{"message": "invalid body request",
                               "sucess": False},
                              })
-        except:
 
+        except:
             return Response({
                              "status":500,
                              'Result':{"message": "employee created failed",
@@ -53,14 +52,14 @@ class projectmodel_view(generics.GenericAPIView):
 
     def post(self,request):
         try:
-            Empid = request.data.get('empId')
+            regId = request.data.get('regId')
             ser = self.get_serializer(data=request.data)
             ser.is_valid()
             resp = ser.save()
 
             return Response({"status":200,
-                             'Result':{"message": "EMmployee Project details created successfully",
-                                       "EmpId":Empid,
+                             'Result':{"message": "Employee Project details created successfully",
+                                       "regId":regId,
                                        "sucess": True},
                              })
 
@@ -81,7 +80,7 @@ class workingview(generics.GenericAPIView):
     serializer_class = workserializer
 
     def post(self,request):
-        Empid = request.data.get('empId')
+        Empid = request.data.get('regId')
         try:
             ser = self.get_serializer(data=request.data)
             ser.is_valid()

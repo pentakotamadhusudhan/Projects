@@ -30,7 +30,7 @@ class employeeModel(models.Model):
 
 
 class projectModel(models.Model):
-    empId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='project')
+    regId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='project')
     title = models.CharField(max_length=1000)
     description = models.TextField(max_length=1000)
     objects = models.Manager
@@ -38,16 +38,17 @@ class projectModel(models.Model):
 
 
 class qualificationModel(models.Model):
-    empId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='qualifications')
+    regId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='qualifications')
     qualificationName = models.TextField(max_length=1000)
     fromDate = models.DateField()
     toDate = models.DateField()
     percentage =models.IntegerField()
     objects = models.Manager
 class work_Experience(models.Model):
-    empId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='workExperience')
+    regId = models.ForeignKey(employeeModel,on_delete=models.CASCADE,related_name='workExperience')
     workExperience = models.CharField(max_length=1000)
     companyName = models.CharField(max_length=200)
     fromDate = models.DateField()
     toDate = models.DateField(max_length=200)
     companyAddress = models.CharField(max_length=200)
+    objects = models.Manager

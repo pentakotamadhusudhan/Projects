@@ -1,9 +1,9 @@
-import cv2
 import base64
+import requests
 
-def base64Con(img):
-    img = cv2.imread(img)
-    jpg_img = cv2.imencode('.jpg', img)
-    b64_string = base64.b64encode(jpg_img[1]).decode('utf-8')
-    # print(b64_string)
-    return b64_string
+
+def get_as_base64(url):
+
+    return base64.b64encode(requests.get(url).content)
+
+# print(get_as_base64('https://thepersonage.com/wp-content/uploads/2020/07/Pawan-Kalyan-Image.jpg'))

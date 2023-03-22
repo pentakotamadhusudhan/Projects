@@ -3,41 +3,40 @@ from rest_framework import serializers
 from .models import *
 from .Crud.base64_convertion import *
 
+def id_check():
+    try:
+        employeeModel.objects.latest('regId')
+        v = employeeModel.objects.latest('regId')
+        # print(v)
+        # print(v, 'empid')
+        empid = str('{:03}'.format(int(v.regId[-3:]) + 1))
+
+        x = (f"EMP" + empid)
+        return x
+    except :
+        return 'EMP001'
+
 class projectSerilizer(serializers.ModelSerializer):
     class Meta:
         model = projectModel
-        fields = ['empId','title',"description"]
+        fields = ['regId','title',"description"]
 
 class qualificationserializer(serializers.ModelSerializer):
     class Meta:
         model = qualificationModel
-        fields = ['qualificationName','fromDate','toDate','percentage','empId']
+        fields = ['qualificationName','fromDate','toDate','percentage','regId']
 
 class registration_serilizer(serializers.ModelSerializer):
-    image =serializers.ImageField()
+    # image =
+
     class Meta:
-        model = employeeModel,
-        fields = ['Name','Email','Age','Gender','PhoneNo','AddressDetails','HouseNo','Street','City','State','Photo','image']
+        model = employeeModel
+        fields = ['Name','Email','Age','Gender','PhoneNo','AddressDetails','HouseNo','Street','City','State','Photo']
     def create(self,validated_data):
-        imgg = validated_data['image']
-
-        bImage = base64Con(imgg)
-        # print(bImage)
-        try:
-            if employeeModel.objects.latest('regId'):
-                v=employeeModel.objects.latest('regId')
-                print(v)
-                empid = str('{:03}'.format(int(v.EmpId[-3:])+1))
-                print(empid)
-                print(type(empid))
-                x =(f"EMP"+empid)
-        except:
-            x = 'EMP001'
-        print('madijknas')
-
-
-        user = employeeModel.objects.create(EmpId=x,
-
+        imgg = validated_data['Photo']
+        bImage = get_as_base64(imgg)
+        x = id_check()
+        user = employeeModel.objects.create(regId = x,
                                             Name=validated_data['Name'],
                                             Email=validated_data['Email'],
                                             Age=validated_data['Age'],
@@ -59,7 +58,7 @@ class registration_serilizer(serializers.ModelSerializer):
 class workserializer(serializers.ModelSerializer):
     class Meta:
         model = work_Experience
-        fields = ['workExperience','companyName','fromDate','toDate','companyAddress','empId']
+        fields = ['workExperience','companyName','fromDate','toDate','companyAddress','regId']
 
 
 class get_serializer(serializers.ModelSerializer):
@@ -88,7 +87,7 @@ class deleteserialzer(serializers.SerializerMetaclass):
 
     class Meta:
         model = employeeModel
-        fields = ['EmpId']
+        fields = ['regId']
 
 
 

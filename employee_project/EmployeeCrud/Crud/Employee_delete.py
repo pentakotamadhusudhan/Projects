@@ -7,14 +7,14 @@ from ..serilizers import deleteserialzer
 class Employee_delete(generics.GenericAPIView):
     serializer_class =deleteserialzer
 
-    def delete(self,request,Empid):
+    def delete(self,request,regId):
         """ Delete  the Employee details including
         - Project
         - Qualification
         - Work Experience details
         """
         try:
-            member = employeeModel.objects.get(EmpId=Empid)
+            member = employeeModel.objects.get(regId=regId)
             member.delete()
             return  Response({"status":200,
                               "Result":{"message": "employee deleted successfully",
