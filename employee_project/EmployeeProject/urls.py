@@ -20,9 +20,9 @@ from drf_yasg import openapi
 
 # from rest_framework_swagger.views import get_swagger_view
 
-from rest_framework_swagger.views import get_swagger_view
+# from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='Pastebin API')
+# schema_view = get_swagger_view(title='Pastebin API')
 
 
 schema_view = get_schema_view(
@@ -38,6 +38,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/',include("EmployeeCrud.urls") ),
-    # path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
 ]
