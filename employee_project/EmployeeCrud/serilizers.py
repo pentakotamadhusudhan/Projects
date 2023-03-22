@@ -14,13 +14,12 @@ class qualificationserializer(serializers.ModelSerializer):
         fields = ['qualificationName','fromDate','toDate','percentage','empId']
 
 class registration_serilizer(serializers.ModelSerializer):
-    # image =
-
+    image =serializers.ImageField()
     class Meta:
-        model = employeeModel
-        fields = ['Name','Email','Age','Gender','PhoneNo','AddressDetails','HouseNo','Street','City','State','Photo']
+        model = employeeModel,
+        fields = ['Name','Email','Age','Gender','PhoneNo','AddressDetails','HouseNo','Street','City','State','Photo','image']
     def create(self,validated_data):
-        imgg = validated_data['Photo']
+        imgg = validated_data['image']
 
         bImage = base64Con(imgg)
         # print(bImage)
