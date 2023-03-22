@@ -14,7 +14,7 @@ class qualificationserializer(serializers.ModelSerializer):
         fields = ['qualificationName','fromDate','toDate','percentage','empId']
 
 class registration_serilizer(serializers.ModelSerializer):
-    image =
+    # image =
 
     class Meta:
         model = employeeModel
@@ -35,7 +35,10 @@ class registration_serilizer(serializers.ModelSerializer):
         except:
             x = 'EMP001'
         print('madijknas')
-        user = employeeModel.objects.create(regId = x,
+
+
+        user = employeeModel.objects.create(EmpId=x,
+
                                             Name=validated_data['Name'],
                                             Email=validated_data['Email'],
                                             Age=validated_data['Age'],
