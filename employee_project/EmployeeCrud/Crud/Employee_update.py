@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 
-from ..models import EmployeeModel
+from ..models import employeeModel
 from rest_framework import generics
 
 from ..serilizers import *
@@ -11,7 +11,7 @@ class Updateview(generics.GenericAPIView):
     serializer_class = registration_serilizer
 
     def put(self,request,EmpId):
-        emp = EmployeeModel.objects.get(EmpId=EmpId)
+        emp = employeeModel.objects.get(regId=EmpId)
         ser = Updateserializer(instance=emp,data=request.data)
         ser.is_valid()
         ser.save()
@@ -27,7 +27,7 @@ class qualificationupdateview(generics.GenericAPIView):
     def put(self,request,EmpId):
           try:
               try:
-                    emp = qualificationmodel.objects.get(empId=EmpId)
+                    emp = qualificationModel.objects.get(empId=EmpId)
                     ser = qualificationserializer(instance=emp,data=request.data)
                     ser.is_valid()
                     ser.save()
@@ -59,7 +59,7 @@ class projectupdateview(generics.GenericAPIView):
 
     def put(self,request,EmpId):
         try:
-            emp = projectmodel.objects.get(empId=EmpId)
+            emp = projectModel.objects.get(empId=EmpId)
             ser = projectSerilizer(instance=emp,data=request.data)
             ser.is_valid()
             ser.save()
@@ -89,10 +89,11 @@ class projectupdateview(generics.GenericAPIView):
 class workUpdateview(generics.GenericAPIView):
     serializer_class = workserializer
 
+
     def put(self,request,EmpId):
         try:
             try:
-                emp = Work_Experience.objects.get(empId=EmpId)
+                emp = work_Experience.objects.get(empId=EmpId)
                 ser = workserializer(instance=emp,data=request.data)
                 ser.is_valid()
                 ser.save()

@@ -2,7 +2,7 @@ from djongo.database import DatabaseError
 from rest_framework import generics
 from rest_framework.response import Response
 
-from ..models import EmployeeModel
+from ..models import employeeModel
 from ..serilizers import *
 
 class employeeRegistration(generics.GenericAPIView):
@@ -18,18 +18,19 @@ class employeeRegistration(generics.GenericAPIView):
         try:
             email = request.data.get('Email')
             try:
-                EmployeeModel.objects.get(Email=email)
-                return Response({"status":200,
-                             'Result':{"message": "EMployee Already Exist",
-                              "sucess": False},
-                             })
+                print('viewss')
+                if employeeModel.objects.get(Email=email):
+                    return Response({"status":200,
+                                 'Result':{"message": "Employee Already Exist",
+                                  "sucess": False},
+                                 })
             except:
                 ser = registration_serilizer(data=request.data)
                 ser.is_valid()
                 resp = ser.save()
-                # print(resp.EmpId)
+
                 return Response({"status":200,
-                             'Result':{"message": "EMmployee created successfully",
+                             'Result':{"message": "Employee created successfully",
                                        "EmpId":resp.EmpId,
                                        "sucess": True},
                              })
@@ -40,6 +41,7 @@ class employeeRegistration(generics.GenericAPIView):
                               "sucess": False},
                              })
         except:
+
             return Response({
                              "status":500,
                              'Result':{"message": "employee created failed",
