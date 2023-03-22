@@ -19,13 +19,16 @@ class registration_serilizer(serializers.ModelSerializer):
         model = EmployeeModel
         fields = ['Name','Email','Age','Gender','PhoneNo','AddressDetails','HouseNo','Street','City','State','Photo']
     def create(self,validated_data):
-        # EmpId = f'EMP00+{str(id)}',
-        x=EmployeeModel.objects.all()
-        # print(EmployeeModel.objects.all().aggregate(latest=models.max('id'))['lastest'])
-
-
-
-        user = EmployeeModel.objects.create(EmpId="EMP001",
+         if employeeModel.objects.latest('regId'):
+            v=employeeModel.objects.latest('regId')
+            print(v)
+            empid = str('{:03}'.format(int(v.EmpId[-3:])+1))
+            print(empid)
+            print(type(empid))
+            x =(f"EMP"+empid)
+        else:
+            x = 'EMP001'
+        user = EmployeeModel.objects.create(EmpId=x,
                                             Name=validated_data['Name'],
                                             Email=validated_data['Email'],
                                             Age=validated_data['Age'],
