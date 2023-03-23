@@ -110,8 +110,7 @@ class qualificationview(generics.GenericAPIView):
     serializer_class =  qualificationserializer
 
     def post(self,request):
-        Empid = request.data.get('empId')
-
+        Empid = request.data.get('regId')
         try:
             ser = self.get_serializer(data=request.data)
             ser.is_valid()
