@@ -11,6 +11,7 @@ class employeeRegistration(generics.GenericAPIView):
     Email is unique
     After fill the form
     You can get Employee ID like EMP000
+    **Note* : * provide image Url,not image path, because in models we have taken as CharFileld for Base64 and we are uploading image file
     """
     serializer_class = registration_serilizer
 
